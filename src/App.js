@@ -26,7 +26,23 @@ class App extends Component {
     images,
     score: 0,
     highscore: 0,
-    clickedImages: []
+    clickedImages: [],
+    message: 'Click an image to begin'
+  };
+
+  // shuffleImages 
+
+  // handleClick - handles when an image is clicked
+  handleClick = id => {};
+
+  // handleIncrement
+  handleIncrement = () => {
+    this.setState({ score: this.state.score + 1 });
+  };
+
+  // handleReset - reset the game if user clicks and image twice
+  handleReset = () => {
+    this.setState({});
   };
 
   // map over this.state.images and render an image card for each image in the array
@@ -34,13 +50,20 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Header 
-        score={this.state.score} 
-        highscore={this.state.highscore}>
-        </Header>
+        <Header
+          score={this.state.score}
+          highscore={this.state.highscore}
+          message={this.state.message}
+        ></Header>
         <Wrapper>
-          {this.state.images.map(image => (
-            <Card id={image.id} key={image.id} image={image.image} />
+          {this.state.images.map(card => (
+            <Card 
+            id={card.id} 
+            key={card.id} 
+            image={card.image}
+            handleIncrement={this.handleIncrement}
+            handleClick={this.handleClick}
+            />
           ))}
         </Wrapper>
       </div>
