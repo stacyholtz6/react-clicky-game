@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Wrapper from './components/Wrapper';
-import ScoreNav from './components/ScoreNav';
+import Header from './components/Header';
 import Card from './components/Card';
 import images from './images.json';
 
@@ -18,6 +18,7 @@ import images from './images.json';
 // set state for cards - clicked✅
 // Deploy to gihub pages
 // change style on image cards
+// fix favicon error - delete or make my own
 
 class App extends Component {
   // set this.state.images to the images json array
@@ -29,8 +30,9 @@ class App extends Component {
 
   render() {
     return (
+      <div className="container">
+        <Header></Header>
       <Wrapper>
-        <ScoreNav>Score</ScoreNav>
         {this.state.images.map(image => (
           <Card 
           id={image.id} 
@@ -38,6 +40,7 @@ class App extends Component {
           image={image.image} />
         ))}
       </Wrapper>
+      </div>
     );
   }
 }

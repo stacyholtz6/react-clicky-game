@@ -13,11 +13,14 @@
   height: 100%;
   overflow: hidden;
   text-align: center;
-  background:#6CADDC;
+  background:rgb(4, 58, 97);
 }
 .card > .img-container > img {
   margin: 1.5rem;
   width: 75%
 }
 
+.card:hover {
+border: 3px solid #64a2ce;
+}
 
