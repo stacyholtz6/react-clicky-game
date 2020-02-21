@@ -2,7 +2,7 @@ import React from "react";
 import Wrapper from "./components/Wrapper";
 import ScoreNav from "./components/ScoreNav";
 import Card from "./components/Card";
-import friends from "./friends.json";
+import images from "./images.json";
 
 
 // To Do:
@@ -23,22 +23,22 @@ function App() {
     <Wrapper>
       <ScoreNav>Score</ScoreNav>
       <Card
-        name={friends[0].name}
-        image={friends[0].image}
-        occupation={friends[0].occupation}
-        location={friends[0].location}
+        name={images[0].name}
+        image={images[0].image}
+        occupation={images[0].occupation}
+        location={images[0].location}
       />
       <Card
-        name={friends[1].name}
-        image={friends[1].image}
-        occupation={friends[1].occupation}
-        location={friends[1].location}
+        name={images[1].name}
+        image={images[1].image}
+        occupation={images[1].occupation}
+        location={images[1].location}
       />
       <Card
-        name={friends[2].name}
-        image={friends[2].image}
-        occupation={friends[2].occupation}
-        location={friends[2].location}
+        name={images[2].name}
+        image={images[2].image}
+        occupation={images[2].occupation}
+        location={images[2].location}
       />
     </Wrapper>
   );
