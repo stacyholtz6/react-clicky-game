@@ -23,7 +23,10 @@ import images from './images.json';
 class App extends Component {
   // set this.state.images to the images json array
   state = {
-    images
+    images,
+    score: 0,
+    highscore: 0,
+    clickedImages: []
   };
 
   // map over this.state.images and render an image card for each image in the array
@@ -31,19 +34,18 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Header></Header>
-      <Wrapper>
-        {this.state.images.map(image => (
-          <Card 
-          id={image.id} 
-          key={image.id} 
-          image={image.image} />
-        ))}
-      </Wrapper>
+        <Header 
+        score={this.state.score} 
+        highscore={this.state.highscore}>
+        </Header>
+        <Wrapper>
+          {this.state.images.map(image => (
+            <Card id={image.id} key={image.id} image={image.image} />
+          ))}
+        </Wrapper>
       </div>
     );
   }
 }
-
 
 export default App;

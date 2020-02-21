@@ -4,10 +4,10 @@ import './style.css';
 const Header = props => (
   <div className="header navbar navbar-dark bg-primary">
     <div className="scores">
-      Score: 0
-      Highscore: 0
+      <h3>Score: {props.score}</h3> 
+      <h3>Highscore: {props.highscore}</h3>
     </div>
   </div>
-)
+);
 
 export default Header;
