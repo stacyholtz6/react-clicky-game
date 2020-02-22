@@ -50,7 +50,19 @@ class App extends Component {
 
   // handleIncrement
   handleIncrement = () => {
-    this.setState({ score: this.state.score + 1 });
+    const newScore = this.state.score + 1;
+    this.setState({ score: newScore });
+
+    // if the score is 12 do this
+    newScore === 12
+      ? this.setState({
+          message: 'Congratulations, You Win!!',
+          highscore: newScore
+        })
+      : newScore >= this.state.highscore
+      ? this.setState({ highscore: newScore })
+      : this.shuffleCards();
+
     this.shuffleCards();
   };
 
