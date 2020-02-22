@@ -6,7 +6,7 @@ import images from './images.json';
 
 // To Do:
 // Render different images✅
-// Each images should listen for click events
+// Each images should listen for click events✅
 // Keep track of users score
 // Score +1 if the user clicks an image that hasn't been clicked before
 // Score reset to 0 if user clicks an image more than once
@@ -17,8 +17,17 @@ import images from './images.json';
 // map() through images✅
 // set state for cards - clicked✅
 // Deploy to gihub pages
-// change style on image cards
+// change style on image cards✅
 // fix favicon error - delete or make my own
+
+// shuffleFunction - Fisher Yates Algorithm
+function shuffleFunction(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
 class App extends Component {
   // set this.state.images to the images json array
@@ -30,14 +39,19 @@ class App extends Component {
     message: 'Click an image to begin'
   };
 
-  // shuffleImages 
+  // shuffleImages
+  shuffleCards = () => {
+    let shuffledImages = shuffleFunction(images);
+    this.setState({ images: shuffledImages });
+  };
 
   // handleClick - handles when an image is clicked
-  handleClick = id => {};
+  // handleClick = id => {};
 
   // handleIncrement
   handleIncrement = () => {
     this.setState({ score: this.state.score + 1 });
+    this.shuffleCards();
   };
 
   // handleReset - reset the game if user clicks and image twice
@@ -57,12 +71,12 @@ class App extends Component {
         ></Header>
         <Wrapper>
           {this.state.images.map(card => (
-            <Card 
-            id={card.id} 
-            key={card.id} 
-            image={card.image}
-            handleIncrement={this.handleIncrement}
-            handleClick={this.handleClick}
+            <Card
+              id={card.id}
+              key={card.id}
+              image={card.image}
+              handleIncrement={this.handleIncrement}
+              handleClick={this.handleClick}
             />
           ))}
         </Wrapper>
