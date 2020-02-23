@@ -41,15 +41,25 @@ class App extends Component {
   };
 
   // handleClick - handles when an image is clicked
-  handleClick = id => {
-    // need to idetify the images clicked with their id's and compair them
-    // if an image is clicked once increment the score +1
-    // else reset the game - handleReset
+  // handleClick = id => {
+  //   if (this.state.clickedImages.indexOf(id) === -1) {
+  //     this.handleIncrement();
 
+  //     this.setState({ clickedImages: this.state.clickedImages.concat(id) });
+  //   } else {
+  //     this.handleReset();
+  //   }
+  // };
+
+
+  handleClick = id => {
+    console.log(id);
+    console.log(this.state.clickedImages)
     if (this.state.clickedImages.indexOf(id) === -1) {
       this.handleIncrement();
-
-      this.setState({ clickedImages: this.state.clickedImages.concat(id) });
+      var newClickedImages = this.state.clickedImages;
+      newClickedImages.push(id);
+      this.setState({ clickedImages: newClickedImages });
     } else {
       this.handleReset();
     }
@@ -76,10 +86,6 @@ class App extends Component {
 
   // handleReset - reset the game if user clicks and image twice
   handleReset = () => {
-    // reset score to 0
-    // Show topscore
-    // Message: Game Over
-    // shuffle images
     console.log('clickedImages', this.state.clickedImages);
     this.setState({
       score: 0,
