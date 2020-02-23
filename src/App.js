@@ -68,7 +68,7 @@ class App extends Component {
     this.setState({
       score: 0,
       highscore: this.state.highscore,
-      message: 'You clicked an Image Twice! Game Over!!!!!',
+      message: 'GAME OVER! Click any image to play again.',
       clickedImages: []
     });
     this.shuffleCards();
