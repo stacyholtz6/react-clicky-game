@@ -1,8 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Clicky Game
 
-## Available Scripts
-
-In the project directory, you can run:
+Deployed at [Clicky Game](https://clicky-game-colorado.herokuapp.com/)
 
 ### `npm start`
 
