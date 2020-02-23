@@ -6,12 +6,12 @@ import images from './images.json';
 
 // To Do:
 
-// Keep track of users score - Need it to stop at 12 - You Win
+// Keep track of users score You Win
 // Score +1 if the user clicks an image that hasn't been clicked before
 // Score reset to 0 if user clicks an image more than once
 // Game restarts if score is reset to 0
 // Deploy to gihub pages
-// change style on image cards✅
+// change style on image cards so they are in two lines
 // fix favicon error - delete or make my own
 
 // shuffleFunction - Fisher Yates Algorithm
@@ -31,6 +31,7 @@ class App extends Component {
     highscore: 0,
     clickedImages: [],
     message: 'Click an image to begin'
+  
   };
 
   // shuffleImages
@@ -44,12 +45,18 @@ class App extends Component {
     // need to idetify the images clicked with their id's and compair them
     // if an image is clicked once increment the score +1
     // else reset the game - handleReset
+    if (this.state.clickedImages.indexOf(id) === -1) {
+      this.handleIncrement();
+      this.setState({ clickedImages: this.state.clickedImages.concat(id) });
+    } else {
+      this.handleReset();
+    }
   };
 
   // handleIncrement
   handleIncrement = () => {
     const newScore = this.state.score + 1;
-    this.setState({ score: newScore });
+    this.setState({ score: newScore, message: '' });
 
     // if the score is 12 do this - Need it to stop at 12
     newScore === 12
@@ -64,13 +71,20 @@ class App extends Component {
     this.shuffleCards();
   };
 
-  // handleReset - reset the game if user clicks and image twice 
-handleReset = () => {
-  // reset score to 0
-  // Show topscore
-  // Message: Game Over
-  // shuffle images
-} 
+  // handleReset - reset the game if user clicks and image twice
+  handleReset = () => {
+    // reset score to 0
+    // Show topscore
+    // Message: Game Over
+    // shuffle images
+    this.setState({
+      score: 0,
+      highscore: this.state.highscore,
+      message: 'You clicked an Image Twice! Game Over!!!!!',
+      clickedImages: []
+    });
+    this.shuffleCards();
+  };
 
   // map over this.state.images and render an image card for each image in the array
 
@@ -90,6 +104,7 @@ handleReset = () => {
               image={card.image}
               handleIncrement={this.handleIncrement}
               handleClick={this.handleClick}
+              handleReset={this.handleReset}
             />
           ))}
         </Wrapper>
