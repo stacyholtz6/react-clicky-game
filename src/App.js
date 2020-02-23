@@ -59,11 +59,13 @@ class App extends Component {
       this.handleIncrement();
       var newClickedImages = this.state.clickedImages;
       newClickedImages.push(id);
-      this.setState({ clickedImages: newClickedImages });
+      this.setState({ clickeImages: [...this.state.clickedImages, id] });
     } else {
       this.handleReset();
     }
   };
+
+  
 
   // handleIncrement
   handleIncrement = () => {
