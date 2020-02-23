@@ -30,8 +30,8 @@ class App extends Component {
     score: 0,
     highscore: 0,
     clickedImages: [],
-    message: 'Click an image to begin'
-  
+    message: 'Click an image to begin',
+    restartMessage: ''
   };
 
   // shuffleImages
@@ -81,20 +81,23 @@ class App extends Component {
       score: 0,
       highscore: this.state.highscore,
       message: 'You clicked an Image Twice! Game Over!!!!!',
+      restartMessage: 'Click an image to begin',
       clickedImages: []
     });
     this.shuffleCards();
+    this.setState({ restarMessage: '' });
   };
 
   // map over this.state.images and render an image card for each image in the array
 
   render() {
     return (
-      <div className="container">
+      <div>
         <Header
           score={this.state.score}
           highscore={this.state.highscore}
           message={this.state.message}
+          restartMessage={this.state.restartMessage}
         ></Header>
         <Wrapper>
           {this.state.images.map(card => (
