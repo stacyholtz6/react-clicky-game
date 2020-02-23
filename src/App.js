@@ -30,8 +30,8 @@ class App extends Component {
     score: 0,
     highscore: 0,
     clickedImages: [],
-    message: 'Click an image to begin',
-    restartMessage: ''
+    message: 'Click an image to begin'
+    // restartMessage: ''
   };
 
   // shuffleImages
@@ -45,8 +45,10 @@ class App extends Component {
     // need to idetify the images clicked with their id's and compair them
     // if an image is clicked once increment the score +1
     // else reset the game - handleReset
+
     if (this.state.clickedImages.indexOf(id) === -1) {
       this.handleIncrement();
+
       this.setState({ clickedImages: this.state.clickedImages.concat(id) });
     } else {
       this.handleReset();
@@ -69,6 +71,7 @@ class App extends Component {
       : this.shuffleCards();
 
     this.shuffleCards();
+    // this.setState({ restarMessage: '' });
   };
 
   // handleReset - reset the game if user clicks and image twice
@@ -77,15 +80,16 @@ class App extends Component {
     // Show topscore
     // Message: Game Over
     // shuffle images
+    console.log('clickedImages', this.state.clickedImages);
     this.setState({
       score: 0,
       highscore: this.state.highscore,
       message: 'You clicked an Image Twice! Game Over!!!!!',
-      restartMessage: 'Click an image to begin',
+      // restartMessage: 'Click an image to begin',
       clickedImages: []
     });
     this.shuffleCards();
-    this.setState({ restarMessage: '' });
+    // this.setState({ restarMessage: '' });
   };
 
   // map over this.state.images and render an image card for each image in the array
@@ -97,7 +101,7 @@ class App extends Component {
           score={this.state.score}
           highscore={this.state.highscore}
           message={this.state.message}
-          restartMessage={this.state.restartMessage}
+          // restartMessage={this.state.restartMessage}
         ></Header>
         <Wrapper>
           {this.state.images.map(card => (
@@ -105,9 +109,9 @@ class App extends Component {
               id={card.id}
               key={card.id}
               image={card.image}
-              handleIncrement={this.handleIncrement}
+              // handleIncrement={this.handleIncrement}
               handleClick={this.handleClick}
-              handleReset={this.handleReset}
+              // handleReset={this.handleReset}
             />
           ))}
         </Wrapper>
