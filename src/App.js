@@ -20,7 +20,7 @@ class App extends Component {
     score: 0,
     highscore: 0,
     clickedImages: [],
-    message: 'Click an image to begin'
+    message: "Click an image to begin -- Becareful! Don't click an image twice!"
     // restartMessage: ''
   };
 
@@ -82,7 +82,6 @@ class App extends Component {
           score={this.state.score}
           highscore={this.state.highscore}
           message={this.state.message}
-          // restartMessage={this.state.restartMessage}
         ></Header>
         <Wrapper>
           {this.state.images.map(card => (
@@ -90,9 +89,7 @@ class App extends Component {
               id={card.id}
               key={card.id}
               image={card.image}
-              // handleIncrement={this.handleIncrement}
               handleClick={this.handleClick}
-              // handleReset={this.handleReset}
             />
           ))}
         </Wrapper>
