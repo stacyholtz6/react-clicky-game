@@ -21,7 +21,6 @@ class App extends Component {
     highscore: 0,
     clickedImages: [],
     message: "Click an image to begin -- Becareful! Don't click an image twice!"
-    // restartMessage: ''
   };
 
   // shuffleImages
